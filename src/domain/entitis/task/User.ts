@@ -1,7 +1,7 @@
-import { Replace } from "../../../helpers/Replace";
+import { type Replace } from "../../../helpers/Replace";
 
 import { v4 } from "uuid";
-import { Task } from "./Task";
+import { type Task } from "./Task";
 import { cnpj, cpf } from "cpf-cnpj-validator";
 
 export interface IUser {
@@ -9,12 +9,12 @@ export interface IUser {
     document: string;
     email: string;
     role: 'admin' | 'user';
-    tasks: Task[];
+    tasks?: Task[];
 }
 
 export class User {
-    private _id: string;
-    private props: IUser;
+    private readonly _id: string;
+    private readonly props: IUser;
 
     constructor(props: Replace<IUser, {
         tasks?: Task[]
@@ -22,16 +22,16 @@ export class User {
         this._id = id ?? v4();
         this.props = {
             ...props,
-            tasks: props.tasks || []
+            tasks: props.tasks ?? []
         };
-        this.validate()
+        this.validate();
     }
 
     private validate() {
-        const CPFsValid =  cpf.isValid(this.props.document)
-        const CNPJIsValid =  cnpj.isValid(this.props.document)
+        const CPFsValid =  cpf.isValid(this.props.document);
+        const CNPJIsValid =  cnpj.isValid(this.props.document);
         if (!CPFsValid && !CNPJIsValid) {
-           throw new Error('Document user is invalid!')
+           throw new Error('Document user is invalid!');
         }
       }
 
@@ -56,7 +56,7 @@ export class User {
     }
 
     get tasks() {
-        return this.props.tasks;
+        return this.props.tasks ?? [];
     }
 
     set fullname(value: string) {

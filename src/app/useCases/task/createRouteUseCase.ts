@@ -1,17 +1,17 @@
 import { Task } from "../../../domain/entitis/task/Task";
-import { TaskRepository } from "../../../domain/repositories/TaskRepository";
-import { CreateTaskUseCaseRequestDTO, CreateTaskUseCaseResponseDTO } from "../../dtos/route/CreateTaskUseCaseDTO";
+import { type TaskRepository } from "../../../domain/repositories/TaskRepository";
+import { type CreateTaskUseCaseRequestDTO, type CreateTaskUseCaseResponseDTO } from "../../dtos/task/CreateTaskUseCaseDTO";
 
 export class CreateTaskUseCase {
 
-    constructor(private taskRepository: TaskRepository){}
+    constructor(private readonly taskRepository: TaskRepository){}
 
     async execute(task: CreateTaskUseCaseRequestDTO): Promise<CreateTaskUseCaseResponseDTO> {
-        const createTask = new Task(task)
+        const createTask = new Task(task);
 
-        const route = await this.taskRepository.create(createTask)
+        const taskCreated = await this.taskRepository.create(createTask);
 
-        return route
+        return taskCreated;
     }
 
 }

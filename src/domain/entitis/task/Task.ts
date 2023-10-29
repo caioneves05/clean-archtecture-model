@@ -1,6 +1,6 @@
 import { v4 } from "uuid";
-import { Replace } from "../../../helpers/Replace";
-import { User } from "./User";
+import { type Replace } from "../../../helpers/Replace";
+import { type User } from "./User";
 
 export interface ITask {
     title: string,
@@ -11,8 +11,8 @@ export interface ITask {
 }
 
 export class Task {
-    private _id: string;
-    private props: ITask;
+    private readonly _id: string;
+    private readonly props: ITask;
 
     constructor(props: Replace<ITask, {
         responsible?: User[]
@@ -20,7 +20,7 @@ export class Task {
         this._id = id ?? v4();
         this.props = {
             ...props,
-            responsible: props.responsible || []
+            responsible: props.responsible ?? []
         };
     }
 

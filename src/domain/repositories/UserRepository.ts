@@ -1,5 +1,5 @@
-import { User } from "../entitis/task/User";
+import { type User } from "../entitis/task/User";
 
 export abstract class UserRepository {
-    abstract create(user: User): Promise<void>
+    abstract create(user: User): Promise<User>;
 }

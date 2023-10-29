@@ -5,9 +5,9 @@ import { userCreatorProps, userResponsibleProps } from "./user.mock";
 const userCreator = new User(userCreatorProps);
 const userResponsible = new User(userResponsibleProps);
 
-export const taskProps: ITask = {
-    title: 'Tarefa de exemplo',
-    description: 'Descrição da tarefa de exemplo',
+export const taskMock: ITask = {
+    title: 'Task Example',
+    description: 'Description the task example',
     deadline: new Date('2023-12-31'),
     creator: userCreator, 
     responsible: [userResponsible],
