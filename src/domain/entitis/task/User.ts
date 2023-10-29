@@ -18,7 +18,7 @@ export class User {
 
     constructor(props: Replace<IUser, {
         tasks?: Task[]
-    }>, id: string) {
+    }>, id?: string) {
         this._id = id ?? v4();
         this.props = {
             ...props,

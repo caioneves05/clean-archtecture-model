@@ -1,5 +1,4 @@
 import { Task } from "../entitis/task/Task";
-
 export abstract class TaskRepository {
-    abstract create(route: Task): Promise<Task>
+    abstract create(task: Task): Promise<void>
 }
