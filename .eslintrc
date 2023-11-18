@@ -18,6 +18,7 @@
         "@typescript-eslint/explicit-function-return-type": "off",
         "@typescript-eslint/adjacent-overload-signatures": "off",
         "@typescript-eslint/no-misused-promises": "off",
+        "@typescript-eslint/consistent-type-imports": "off",
         "semi": ["error", "always"]
     }
 }
