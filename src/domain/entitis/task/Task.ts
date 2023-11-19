@@ -6,7 +6,7 @@ export interface ITask {
     title: string,
     description: string,
     deadline: Date,
-    creator: User,
+    creatorId: string,
     responsible: User[]
 }
 
@@ -40,8 +40,8 @@ export class Task {
         return this.props.deadline;
     }
 
-    get creator() {
-        return this.props.creator;
+    get creatorId() {
+        return this.props.creatorId;
     }
 
     get responsible() {
@@ -60,8 +60,8 @@ export class Task {
         this.props.deadline = value;
     }
 
-    set creator(value: User) {
-        this.props.creator = value;
+    set creatorId(value: string) {
+        this.props.creatorId = value;
     }
 
     set responsible(value: User[]) {
