@@ -19,6 +19,7 @@
         "@typescript-eslint/adjacent-overload-signatures": "off",
         "@typescript-eslint/no-misused-promises": "off",
         "@typescript-eslint/consistent-type-imports": "off",
+        "@typescript-eslint/no-extraneous-class": "off",
         "semi": ["error", "always"]
     }
 }
