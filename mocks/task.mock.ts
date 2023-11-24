@@ -9,6 +9,6 @@ export const taskMock: ITask = {
     title: 'Task Example',
     description: 'Description the task example',
     deadline: new Date('2023-12-31'),
-    creator: userCreator, 
+    creatorId: userCreator.id, 
     responsible: [userResponsible],
   };

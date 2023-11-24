@@ -4,7 +4,7 @@ export interface CreateTaskUseCaseRequestDTO {
     title: string,
     description: string,
     deadline: Date,
-    creator: User,
+    creatorId: string,
     responsible: User[]
 }
 
@@ -12,6 +12,6 @@ export interface CreateTaskUseCaseResponseDTO {
     title: string,
     description: string,
     deadline: Date,
-    creator: User,
+    creatorId: string,
     responsible: User[]
 }
