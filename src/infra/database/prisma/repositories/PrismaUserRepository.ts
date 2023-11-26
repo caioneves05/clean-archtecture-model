@@ -15,4 +15,24 @@ export class PrismaUserRepository implements UserRepository {
 
         return PrismaUserMapper.toEntity(createUser);
     }
+
+    async delete(id: string): Promise<User> {
+        const userExist = await this.prisma.user.findFirst({
+            where: {
+                id,
+            }
+        });
+
+        if(!userExist) {
+            throw new Error('User is not exist');
+        }
+
+        const deleteUser = await this.prisma.user.delete({
+            where: {
+                id,
+            }
+        });
+
+        return PrismaUserMapper.toEntity(deleteUser);
+    }
 }
