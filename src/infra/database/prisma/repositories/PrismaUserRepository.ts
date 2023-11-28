@@ -3,6 +3,7 @@ import { PrismaService } from "..";
 import { User } from "../../../../domain/entitis/task/User";
 import { PrismaUserMapper } from "../mappers/PrismaUserMapper";
 import { injectable } from "tsyringe";
+import { UpdateUserRepositoryDTO } from "../../../../domain/dtos/user/UpdateUserRepositoryDTO";
 
 @injectable()
 export class PrismaUserRepository implements UserRepository {
@@ -34,5 +35,30 @@ export class PrismaUserRepository implements UserRepository {
         });
 
         return PrismaUserMapper.toEntity(deleteUser);
+    }
+
+    async update(params: UpdateUserRepositoryDTO): Promise<User> {
+        const userExist = await this.prisma.user.findFirst({
+            where: {
+                id: params.id,
+            }
+        });
+
+        if(!userExist) {
+            throw new Error('User is not exist');
+        }
+
+        const updateUser = await this.prisma.user.update({
+            where: {
+                id: params.id,
+            },
+            data: {
+                fullname: params.fullname,
+                email: params.email,
+                role: params.role
+            }
+        });
+
+        return PrismaUserMapper.toEntity(updateUser);
     }
 }

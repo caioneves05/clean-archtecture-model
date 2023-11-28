@@ -1,8 +1,9 @@
 import express, { Router, Request, Response } from 'express';
 import { inject, injectable } from 'tsyringe';
+import { CreateUserRequestDTO, DeleteUserRequestDTO, UpdateUserRequestDTO } from '../dtos/UserRequestDTO';
 import { type CreateUserUseCase } from '../../../app/useCases/user/createUsersUseCase';
-import { CreateUserRequestDTO, DeleteUserRequestDTO } from '../dtos/UserRequestDTO';
 import { DeleteUserUseCase } from '../../../app/useCases/user/deleteUserUseCase';
+import { UpdateUserUseCase } from '../../../app/useCases/user/updateUsersUseCase';
 
 @injectable()
 class UserController {
@@ -10,10 +11,12 @@ class UserController {
 
     constructor(
         @inject('CreateUserUseCase') readonly createUserUseCase: CreateUserUseCase,
-        @inject('DeleteUserUseCase') readonly deleteUserUseCase: DeleteUserUseCase
+        @inject('DeleteUserUseCase') readonly deleteUserUseCase: DeleteUserUseCase,
+        @inject('UpdateUserUseCase') readonly updateUserUseCase: UpdateUserUseCase,
     ) {
         this.router.use(express.json());
         this.router.post('', this.createUser);
+        this.router.patch('/:id', this.updateUser);
         this.router.delete('/:id', this.deleteUser);
     }
 
@@ -41,6 +44,22 @@ class UserController {
             const deleteUserUseCase = await this.deleteUserUseCase.execute(userRequestDTO);
 
             return res.json(deleteUserUseCase);
+        } catch(error) {
+            return res.status(500).json({error: 'Internal server error'});
+        }
+    };
+
+    updateUser = async (req: Request, res: Response) => {        
+        try {
+            const userRequestDTO: UpdateUserRequestDTO = {
+                id: req.params.id,
+                email: req.body.email,
+                fullname: req.body.fullname,
+                role: req.body.role
+            };
+            const updateUserUseCase = await this.updateUserUseCase.execute(userRequestDTO);
+
+            return res.json(updateUserUseCase);
         } catch(error) {
             return res.status(500).json({error: 'Internal server error'});
         }

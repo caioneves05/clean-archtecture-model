@@ -20,6 +20,22 @@ export abstract class CreateUserRequestDTO {
     role: 'admin' | 'user';
 }
 
+export abstract class UpdateUserRequestDTO {
+    @IsString({ message: 'The "id" field must be a string.' })
+    @IsNotEmpty({ message: 'The "id" field cannot be empty.' })
+    id: string;
+
+    @IsString({ message: 'The "fullname" field must be a string.' })
+    @Min(3, { message: 'The "fullname" field must have at least 3 characters.' })
+    fullname: string;
+
+    @IsString({ message: 'The "email" field must be a string.' })
+    email: string;
+
+    @IsString({ message: 'The "role" field must be a string.' })
+    role: 'admin' | 'user';
+}
+
 export abstract class DeleteUserRequestDTO {
     @IsString({ message: 'The "id" field must be a string.' })
     @IsNotEmpty({ message: 'The "id" field cannot be empty.' })
