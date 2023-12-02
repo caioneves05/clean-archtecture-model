@@ -17,7 +17,7 @@ export class CreateTaskUseCase {
             responsibleId: task.responsibleId
         });
 
-        const taskCreated = await this.taskRepository.create({
+        const taskCreated = await this.taskRepository.createTask({
             title: createTask.title,
             description: createTask.description,
             creatorId: createTask.creatorId,

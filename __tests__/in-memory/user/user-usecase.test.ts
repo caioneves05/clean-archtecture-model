@@ -1,7 +1,7 @@
 import 'reflect-metadata';
 
 import { userCreatorProps, userResponsibleProps } from "../../../mocks/user.mock";
-import { CreateUserUseCase } from "../../../src/app/useCases/user/createUsersUseCase";
+import { CreateUserUseCase } from "../../../src/app/useCases/user/CreateUsersUseCase";
 import { UserInMemory } from "../../../src/infra/repositories/user-in-memory-repository";
 
 describe('User UseCases suit test', () => {

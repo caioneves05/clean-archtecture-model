@@ -1,8 +1,8 @@
 export interface UpdateUserUseCaseRequestDTO {
     id: string
-    fullname?: string;
-    email?: string;
-    role?: 'admin' | 'user';
+    fullname: string;
+    email: string;
+    role: 'admin' | 'user';
 }
 
 export interface UpdateUserUseCaseResponseDTO {

@@ -1,9 +1,10 @@
 import express, { Router, Request, Response } from 'express';
 import { inject, injectable } from 'tsyringe';
 import { CreateUserRequestDTO, DeleteUserRequestDTO, UpdateUserRequestDTO } from '../dtos/UserRequestDTO';
-import { type CreateUserUseCase } from '../../../app/useCases/user/createUsersUseCase';
-import { DeleteUserUseCase } from '../../../app/useCases/user/deleteUserUseCase';
-import { UpdateUserUseCase } from '../../../app/useCases/user/updateUsersUseCase';
+import { type CreateUserUseCase } from '../../../app/useCases/user/CreateUsersUseCase';
+import { DeleteUserUseCase } from '../../../app/useCases/user/DeleteUserUseCase';
+import { UpdateUserUseCase } from '../../../app/useCases/user/UpdateUsersUseCase';
+
 
 @injectable()
 class UserController {
