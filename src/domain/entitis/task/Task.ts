@@ -6,7 +6,7 @@ export interface ITask {
     description: string,
     deadline: Date,
     creatorId: string,
-    responsible: string
+    responsibleId: string
 }
 
 export class Task {
@@ -14,7 +14,7 @@ export class Task {
     private readonly props: ITask;
 
     constructor(props: Replace<ITask, {
-        responsible: string
+        responsibleId: string
     }>, id?: string) {
         this._id = id ?? v4();
         this.props = {
@@ -42,8 +42,8 @@ export class Task {
         return this.props.creatorId;
     }
 
-    get responsible() {
-        return this.props.responsible;
+    get responsibleId() {
+        return this.props.responsibleId;
     }
 
     set title(value: string) {
@@ -62,7 +62,7 @@ export class Task {
         this.props.creatorId = value;
     }
 
-    set responsible(value: string) {
-        this.props.responsible = value;
+    set responsibleId(value: string) {
+        this.props.responsibleId = value;
     }
 }

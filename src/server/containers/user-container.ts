@@ -11,7 +11,7 @@ container.register('DeleteUserUseCase', { useClass: DeleteUserUseCase });
 container.register('UpdateUserUseCase', { useClass: UpdateUserUseCase });
 container.register('UserRepository', { useClass: PrismaUserRepository });
 
-
 const userResolver = container.resolve(UserController);
+
 
 export { userResolver };

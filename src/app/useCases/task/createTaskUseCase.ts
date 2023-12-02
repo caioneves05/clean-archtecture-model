@@ -1,10 +1,12 @@
+import { inject, injectable } from "tsyringe";
 import { Task } from "../../../domain/entitis/task/Task";
 import { type TaskRepository } from "../../../domain/repositories/TaskRepository";
 import { type CreateTaskUseCaseRequestDTO, type CreateTaskUseCaseResponseDTO } from "../../dtos/task/CreateTaskUseCaseDTO";
 
+@injectable()
 export class CreateTaskUseCase {
 
-    constructor(private readonly taskRepository: TaskRepository){}
+    constructor(@inject('TaskRepository')private readonly taskRepository: TaskRepository){}
 
     async execute(task: CreateTaskUseCaseRequestDTO): Promise<CreateTaskUseCaseResponseDTO> {
         const createTask = new Task({
@@ -12,7 +14,7 @@ export class CreateTaskUseCase {
             description: task.description,
             creatorId: task.creatorId,
             deadline: task.deadline,
-            responsible: task.responsibleId
+            responsibleId: task.responsibleId
         });
 
         const taskCreated = await this.taskRepository.create({
@@ -20,7 +22,7 @@ export class CreateTaskUseCase {
             description: createTask.description,
             creatorId: createTask.creatorId,
             deadline: createTask.deadline,
-            responsibleId: createTask.responsible
+            responsibleId: createTask.responsibleId
         });
 
         return taskCreated;

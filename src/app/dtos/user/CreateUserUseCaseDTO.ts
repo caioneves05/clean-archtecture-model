@@ -13,5 +13,5 @@ export interface CreateUserUseCaseResponseDTO {
     document: string;
     email: string;
     role: string;
-    tasks?: Task[];
+    tasksId?: string[];
 }

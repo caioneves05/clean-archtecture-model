@@ -1,5 +1,5 @@
 import express from 'express';
-import { resolver } from './index.container';
+import { resolver } from './containers/index.container';
 
 const router = express.Router();
 

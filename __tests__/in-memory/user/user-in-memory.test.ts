@@ -13,7 +13,7 @@ describe(' UserInMemoryRepository Suit Tests', () => {
     await repository.create(userCreator);
     await repository.create(userResponsible);
 
-    expect(repository.items).toHaveLength(2);
-    expect(repository.items).toStrictEqual([userCreator, userResponsible]);
+    expect(repository.users).toHaveLength(2);
+    expect(repository.users).toStrictEqual([userCreator, userResponsible]);
   });
 });

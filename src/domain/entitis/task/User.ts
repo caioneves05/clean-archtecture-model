@@ -9,7 +9,7 @@ export interface IUser {
     document: string;
     email: string;
     role: 'admin' | 'user';
-    tasksId: string[];
+    tasksId?: string[];
 }
 
 export class User {
@@ -55,7 +55,7 @@ export class User {
     }
 
     get tasks() {
-        return this.props.tasksId;
+        return this.props.tasksId ?? [];
     }
 
     set fullname(value: string) {

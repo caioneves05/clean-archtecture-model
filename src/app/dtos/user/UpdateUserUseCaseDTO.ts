@@ -1,5 +1,3 @@
-import { Task } from "../../../domain/entitis/task/Task";
-
 export interface UpdateUserUseCaseRequestDTO {
     id: string
     fullname?: string;
@@ -12,5 +10,5 @@ export interface UpdateUserUseCaseResponseDTO {
     document: string;
     email: string;
     role: string;
-    tasks?: Task[];
+    tasksId?: string[];
 }

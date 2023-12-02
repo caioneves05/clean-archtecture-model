@@ -11,6 +11,6 @@ describe('User UseCases suit test', () => {
 
         await createTask.execute(userCreatorProps);
         await createTask.execute(userResponsibleProps);
-        expect(respository.items).toHaveLength(2);
+        expect(respository.users).toHaveLength(2);
     });
 });
