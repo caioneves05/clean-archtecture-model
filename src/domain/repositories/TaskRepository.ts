@@ -1,5 +1,4 @@
-import { CreateTaskUseCaseRequestDTO } from "../../app/dtos/task/CreateTaskUseCaseDTO";
-import { type Task } from "../entitis/task/Task";
+import { CreateTaskUseCaseRequestDTO, CreateTaskUseCaseResponseDTO } from "../../app/dtos/task/CreateTaskUseCaseDTO";
 export abstract class TaskRepository {
-    abstract create(task: CreateTaskUseCaseRequestDTO): Promise<Task>
+    abstract create(task: CreateTaskUseCaseRequestDTO): Promise<CreateTaskUseCaseResponseDTO>
 }

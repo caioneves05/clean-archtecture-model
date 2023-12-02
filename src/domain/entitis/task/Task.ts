@@ -1,13 +1,12 @@
 import { v4 } from "uuid";
 import { type Replace } from "../../../helpers/Replace";
-import { type User } from "./User";
 
 export interface ITask {
     title: string,
     description: string,
     deadline: Date,
     creatorId: string,
-    responsible: User[]
+    responsible: string
 }
 
 export class Task {
@@ -15,12 +14,11 @@ export class Task {
     private readonly props: ITask;
 
     constructor(props: Replace<ITask, {
-        responsible?: User[]
+        responsible: string
     }>, id?: string) {
         this._id = id ?? v4();
         this.props = {
             ...props,
-            responsible: props.responsible ?? []
         };
     }
 
@@ -64,7 +62,7 @@ export class Task {
         this.props.creatorId = value;
     }
 
-    set responsible(value: User[]) {
+    set responsible(value: string) {
         this.props.responsible = value;
     }
 }

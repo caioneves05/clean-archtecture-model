@@ -1,5 +1,5 @@
 import { taskMock } from "../../../mocks/task.mock";
-import { CreateTaskUseCase } from "../../../src/app/useCases/task/createRouteUseCase";
+import { CreateTaskUseCase } from "../../../src/app/useCases/task/createTaskUseCase";
 import { TaskInMemory } from "../../../src/infra/repositories/task-in-memory.repository";
 
 describe('Task UseCases suit test', () => {

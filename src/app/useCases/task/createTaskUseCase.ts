@@ -11,10 +11,17 @@ export class CreateTaskUseCase {
             title: task.title,
             description: task.description,
             creatorId: task.creatorId,
-            deadline: task.deadline
+            deadline: task.deadline,
+            responsible: task.responsibleId
         });
 
-        const taskCreated = await this.taskRepository.create(createTask);
+        const taskCreated = await this.taskRepository.create({
+            title: createTask.title,
+            description: createTask.description,
+            creatorId: createTask.creatorId,
+            deadline: createTask.deadline,
+            responsibleId: createTask.responsible
+        });
 
         return taskCreated;
     }

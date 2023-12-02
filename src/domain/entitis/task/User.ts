@@ -9,7 +9,7 @@ export interface IUser {
     document: string;
     email: string;
     role: 'admin' | 'user';
-    tasks?: Task[];
+    tasksId: string[];
 }
 
 export class User {
@@ -22,7 +22,6 @@ export class User {
         this._id = id ?? v4();
         this.props = {
             ...props,
-            tasks: props.tasks ?? []
         };
         this.validate();
     }
@@ -56,7 +55,7 @@ export class User {
     }
 
     get tasks() {
-        return this.props.tasks ?? [];
+        return this.props.tasksId;
     }
 
     set fullname(value: string) {
@@ -75,7 +74,7 @@ export class User {
         this.props.role = value;
     }
 
-    set tasks(value: Task[]) {
-        this.props.tasks = value;
+    set tasks(value: string[]) {
+        this.props.tasksId = value;
     }
 }
